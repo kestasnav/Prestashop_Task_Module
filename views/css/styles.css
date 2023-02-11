@@ -2,7 +2,10 @@
     background: #f4f4f4; !important;
 }
 
-h1 {
+.hash1 {
     color: red; !important;
-    font-size: 25em;
+}
+
+#sampleFooter {
+    color: green;
 }

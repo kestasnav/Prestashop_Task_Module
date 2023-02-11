@@ -34,7 +34,7 @@ class TaskModule extends Module
 			&& $this->installTab()
 			&& $this->initDefaultConfigurationValues()
 			&& $this->registerHook('displayFooterBefore')
-			&& $this->registerHook('hookActionObjectProductAddAfter');
+			&& $this->registerHook('actionProductSave');
 	}
 
 	public function uninstall()
@@ -45,7 +45,7 @@ class TaskModule extends Module
 			&& $this->uninstallTab()
             && $this->initDefaultConfigurationValues()
 			&& $this->unregisterHook('displayFooterBefore')
-			&& $this->unregisterHook('hookActionObjectProductAddAfter');
+			&& $this->unregisterHook('actionProductSave');
 	}
 
 
@@ -64,10 +64,21 @@ class TaskModule extends Module
 	}
 		
 	/** Action hook, it's triggered after product creation */
-	public function hookActionObjectProductAddAfter ($params)
+	public function hookActionProductSave ($params)
 	{
-        $product_id = $params['id_product'];
-        $product = $params['product'];
+//        $product = $params['product'];
+//       $name = $params['name'];
+//        $name.'testine';
+     //  $name = Tools::getValue('name');
+
+      // Var_dump($name);
+
+
+//        $product->name = $productName.'testaszasdasdasda';
+//        $product->save();
+//        $id_product = Tools::getValue('attribute_name');
+//        $id_product->attribute_name = 'dickhead';
+//        Var_dump($params['product']);exit;
 	}
 		
 	/** Module configuration page */
