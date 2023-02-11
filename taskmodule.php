@@ -33,8 +33,9 @@ class TaskModule extends Module
             && CustomersModel::installSql()
 			&& $this->installTab()
 			&& $this->initDefaultConfigurationValues()
-			&& $this->registerHook('displayFooterBefore')
-			&& $this->registerHook('actionProductSave');
+			&& $this->registerHook('displayHome')
+            && $this->registerHook('displayFooterBefore')
+			&& $this->registerHook('actionProductUpdate');
 	}
 
 	public function uninstall()
@@ -44,42 +45,40 @@ class TaskModule extends Module
             && CustomersModel::uninstallSql()
 			&& $this->uninstallTab()
             && $this->initDefaultConfigurationValues()
-			&& $this->unregisterHook('displayFooterBefore')
-			&& $this->unregisterHook('actionProductSave');
+			&& $this->unregisterHook('displayHome')
+            && $this->registerHook('displayFooterBefore')
+			&& $this->unregisterHook('actionProductUpdate');
 	}
 
 
-	/** Example of a display hook, it's triggered by the footer on the front office */
-	public function hookDisplayFooterBefore()
+	/** Example of a display hook, which loading css and JS files */
+	public function hookDisplayHome()
 	{
-      //  $this->bootstrap = true;
+
 		// css from here
 		$this->context->controller->addCSS($this->_path.'views/css/styles.css','all');
 
         // javascripts from here
-        $this->context->controller->addJS($this->_path . 'views/js/main.js', 'all');
+        // $this->context->controller->addJS($this->_path . 'views/js/main.js', 'all');
+}
 
-		return $this->display(__FILE__, 'footer.tpl');
+    /** Example of a display hook, it's triggered by the footer on the front office */
 
-	}
+    public function hookDisplayFooterBefore()
+    {
+        return $this->display(__FILE__, 'footer.tpl');
+
+    }
 		
 	/** Action hook, it's triggered after product creation */
-	public function hookActionProductSave ($params)
-	{
-//        $product = $params['product'];
-//       $name = $params['name'];
-//        $name.'testine';
-     //  $name = Tools::getValue('name');
 
-      // Var_dump($name);
-
-
-//        $product->name = $productName.'testaszasdasdasda';
-//        $product->save();
-//        $id_product = Tools::getValue('attribute_name');
-//        $id_product->attribute_name = 'dickhead';
-//        Var_dump($params['product']);exit;
-	}
+    public function hookActionProductUpdate($params)
+    {
+        if (isset($params['id_product']) && $params['id_product'] != '') {
+            $updateSQL = "UPDATE " . _DB_PREFIX_ . "product_lang SET name=concat(name, ' (Bandomoji užduotis)') WHERE id_product = '" . (int)$params['id_product'] . "' AND NOT name like concat('%', ' (Bandomoji užduotis)', '%')";
+            DB::getInstance()->execute($updateSQL);
+        }
+    }
 		
 	/** Module configuration page */
 	public function getContent()

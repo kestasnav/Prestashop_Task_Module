@@ -12,7 +12,6 @@
  require_once (_PS_MODULE_DIR_ . 'taskmodule/models/Customers.php');
 if (!defined('_PS_VERSION_')) exit;
 
-// You can now access this controller from /your_admin_directory/index.php?controller=AdminClientsController
 class AdminClientsController extends ModuleAdminController
 {
     public function __construct()
@@ -40,6 +39,8 @@ class AdminClientsController extends ModuleAdminController
         parent::__construct();
         $this->bootstrap = true;
     }
+
+    /** Render new clients form */
 
     public function renderForm() {
         $this->fields_form = [

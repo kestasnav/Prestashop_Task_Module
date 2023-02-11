@@ -12,7 +12,7 @@
 
 if (!defined('_PS_VERSION_')) exit;
 
-// You can now access this controller from /index.php?fc=module&module=taskmodule&controller=FrontController
+
 class TaskModuleFrontController extends ModuleFrontController
 {
 	public function __construct()
@@ -21,6 +21,8 @@ class TaskModuleFrontController extends ModuleFrontController
 		// Do your stuff here
 	}
 
+    /** Front Controller content page */
+
 	public function initContent()
 	{
 		$this->context->smarty->assign([
@@ -28,7 +30,6 @@ class TaskModuleFrontController extends ModuleFrontController
 		]);
 
 		$this->setTemplate('my-front-template.tpl');
-		// Don't forget to create /modules/taskmodule/views/templates/front/my-front-template.tpl
 
 		parent::initContent();
 	}

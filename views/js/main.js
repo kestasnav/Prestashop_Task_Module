@@ -1,3 +1,3 @@
 $(document).ready(function (){
-    alert('JS is working');
+    alert('JavaScript is working');
 });

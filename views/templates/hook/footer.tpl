@@ -1,6 +1,5 @@
-<div class="d-flex customerContainer">
+<div class="customerContainer">
 <div class="row">
-
 
 <div class="panel">
     <div class="panel-heading mb-1"><h1>Vartotojo informacija</h1></div>
@@ -36,15 +35,3 @@
 </div>
 </div>
 
-{*<div class=" customerContainer">*}
-
-{*        <div class="panel">*}
-{*            <div class="panel-heading mb-1">*}
-{*                <h1 class="hash1">Vartotojo informacija</h1>*}
-{*            </div>*}
-{*            <div class="panel-body">*}
-{*                <div id="sampleFooter">Sample </div>*}
-{*            </div>*}
-{*        </div>*}
-
-{*</div>*}
