@@ -22,15 +22,12 @@ class TaskModuleFrontController extends ModuleFrontController
 	}
 
     /** Front Controller content page */
-
 	public function initContent()
 	{
 		$this->context->smarty->assign([
 			'greetingsFront' => 'Hello Front from Task Module !',
 		]);
-
 		$this->setTemplate('my-front-template.tpl');
-
 		parent::initContent();
 	}
 }

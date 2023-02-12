@@ -19,9 +19,7 @@ class AdminClientsController extends ModuleAdminController
         $this->table = 'clients';
         $this->className = 'CustomersModel';
         $this->identifier = CustomersModel::$definition['primary'];
-
         $this->fields_list = [
-
             'customer_name' => [
                 'title' => 'Vardas'
             ],
@@ -32,16 +30,13 @@ class AdminClientsController extends ModuleAdminController
                 'title' => 'El. Paštas'
             ]
         ];
-
         $this->addRowAction('edit');
         $this->addRowAction('delete');
-
         parent::__construct();
         $this->bootstrap = true;
     }
 
     /** Render new clients form */
-
     public function renderForm() {
         $this->fields_form = [
             'legend' => [
@@ -80,6 +75,5 @@ class AdminClientsController extends ModuleAdminController
         ];
         return parent::renderForm();
     }
-
 }
 

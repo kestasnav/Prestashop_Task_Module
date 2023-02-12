@@ -17,9 +17,7 @@ require_once(__DIR__ . '/models/Customers.php');
 
 class TaskModule extends Module
 {
-	const DEFAULT_CONFIGURATION = [
-
-	];
+	const DEFAULT_CONFIGURATION = [];
 
 	public function __construct()
 	{
@@ -52,7 +50,6 @@ class TaskModule extends Module
 
 
 	/** Example of a display hook, which loading css and JS files */
-
 	public function hookDisplayHome()
 	{
 		// css from here
@@ -62,15 +59,12 @@ class TaskModule extends Module
 }
 
     /** Example of a display hook, it's triggered by the footer on the front office */
-
     public function hookDisplayFooter()
     {
         return $this->display(__FILE__, 'footer.tpl');
-
     }
 		
 	/** Action hook, it's triggered after product creation */
-
     public function hookActionProductUpdate($params)
     {
         if (isset($params['id_product']) && $params['id_product'] != '') {
@@ -80,35 +74,26 @@ class TaskModule extends Module
     }
 		
 	/** Module configuration page */
-
 	public function getContent()
 	{
-
         if(Tools::isSubmit('savebutton')) {
             $task_name = Tools::getValue('task_name');
-
             Configuration::updateValue('TASKMODULE_STR', $task_name, true);
-
         }
+
         if(Tools::isSubmit('savebutton')) {
-
             $tasks = Tools::getValue('tasks');
-
             Configuration::updateValue('TASKS_STR', $tasks, true);
         }
 
         $this->context->smarty->assign(array(
             'TASKMODULE_STR' => Configuration::get('TASKMODULE_STR'),
             'TASKS_STR' => Configuration::get('TASKS_STR')
-
         ));
 		return $this->display(__FILE__, 'configuration.tpl');
-
     }
 
-
 	/** Initialize the module declaration */
-
 	private function initializeModule()
 	{
 		$this->name = 'taskmodule';
@@ -137,12 +122,10 @@ class TaskModule extends Module
 				Configuration::updateValue($key, $value);
 			}
 		}
-
 		return true;
 	}
 
 	/** Install module tab, to your admin controller */
-
     public function installTab()
     {
         $tab = new Tab();
@@ -183,6 +166,5 @@ class TaskModule extends Module
 		}
 		return true;
 	}
-
 }
 

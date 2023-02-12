@@ -61,17 +61,15 @@ class CustomersModel extends ObjectModel
 				PRIMARY KEY (`{$primaryField}`)
 			) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 		";
-
 		return Db::getInstance()->execute($sql);
 	}
 
+    /** Unistall database table */
     public static function uninstallSql()
     {
         $tableName = _DB_PREFIX_ . self::$definition['table'];
-
         $sql = "
 			DROP TABLE IF EXISTS `{$tableName}` ";
-
         return Db::getInstance()->execute($sql);
     }
 }
