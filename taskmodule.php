@@ -34,7 +34,7 @@ class TaskModule extends Module
 			&& $this->installTab()
 			&& $this->initDefaultConfigurationValues()
 			&& $this->registerHook('displayHome')
-            && $this->registerHook('displayFooterBefore')
+            && $this->registerHook('displayFooter')
 			&& $this->registerHook('actionProductUpdate');
 	}
 
@@ -46,25 +46,24 @@ class TaskModule extends Module
 			&& $this->uninstallTab()
             && $this->initDefaultConfigurationValues()
 			&& $this->unregisterHook('displayHome')
-            && $this->registerHook('displayFooterBefore')
+            && $this->registerHook('displayFooter')
 			&& $this->unregisterHook('actionProductUpdate');
 	}
 
 
 	/** Example of a display hook, which loading css and JS files */
+
 	public function hookDisplayHome()
 	{
-
 		// css from here
 		$this->context->controller->addCSS($this->_path.'views/css/styles.css','all');
-
         // javascripts from here
-        // $this->context->controller->addJS($this->_path . 'views/js/main.js', 'all');
+         $this->context->controller->addJS($this->_path . 'views/js/main.js', 'all');
 }
 
     /** Example of a display hook, it's triggered by the footer on the front office */
 
-    public function hookDisplayFooterBefore()
+    public function hookDisplayFooter()
     {
         return $this->display(__FILE__, 'footer.tpl');
 
@@ -76,11 +75,12 @@ class TaskModule extends Module
     {
         if (isset($params['id_product']) && $params['id_product'] != '') {
             $updateSQL = "UPDATE " . _DB_PREFIX_ . "product_lang SET name=concat(name, ' (Bandomoji užduotis)') WHERE id_product = '" . (int)$params['id_product'] . "' AND NOT name like concat('%', ' (Bandomoji užduotis)', '%')";
-            DB::getInstance()->execute($updateSQL);
+             DB::getInstance()->execute($updateSQL);
         }
     }
 		
 	/** Module configuration page */
+
 	public function getContent()
 	{
 
@@ -108,6 +108,7 @@ class TaskModule extends Module
 
 
 	/** Initialize the module declaration */
+
 	private function initializeModule()
 	{
 		$this->name = 'taskmodule';

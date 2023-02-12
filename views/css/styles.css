@@ -1,16 +1,17 @@
 .customerContainer {
-    border: 1px solid black;
     margin: 0 auto;
     width: 100%;
     padding: 35px;
+    background: rgb(255,255,255);
+    background: radial-gradient(circle, rgba(255,255,255,1) 0%,
+    rgba(244,244,244,0.9024859943977591) 0%,
+    rgba(244,244,244,0.5691526610644257) 54%);
+    box-shadow: -6px 14px 72px -13px rgba(0,0,0,0.75);
+    -webkit-box-shadow: -6px 14px 72px -13px rgba(0,0,0,0.75);
+    -moz-box-shadow: -6px 14px 72px -13px rgba(0,0,0,0.75);
 }
 
 h1 {
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     text-align: center;
-}
-
-
-#sampleFooter {
-    color: green
 }
